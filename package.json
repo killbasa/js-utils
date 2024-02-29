@@ -1,0 +1,20 @@
+{
+	"name": "@killbasa/js-utils",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"format": "yarn workspaces foreach --all run format"
+	},
+	"devDependencies": {
+		"@killbasa/eslint-config": "workspace:^",
+		"@killbasa/prettier-config": "workspace:^",
+		"@killbasa/ts-config": "workspace:^",
+		"@types/node": "^20.11.24",
+		"eslint": "^8.57.0",
+		"prettier": "^3.2.5",
+		"typescript": "^5.3.3"
+	},
+	"packageManager": "yarn@4.1.0"
+}

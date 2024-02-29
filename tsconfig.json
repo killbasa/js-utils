@@ -1,0 +1,9 @@
+{
+	"extends": "@killbasa/ts-config",
+	"compilerOptions": {
+		"noEmit": true,
+		"allowJs": true,
+		"checkJs": true
+	},
+	"include": ["packages/**/*.ts", "packages/**/*.js", ".eslintrc.cjs"]
+}

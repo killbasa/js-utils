@@ -1,0 +1,28 @@
+{
+	"name": "@killbasa/ts-config",
+	"author": "killbasa <contact@shaneb.xyz>",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "tsconfig.json",
+	"exports": {
+		".": {
+			"import": "./tsconfig.json",
+			"require": "./tsconfig.json"
+		}
+	},
+	"files": [
+		"tsconfig.json"
+	],
+	"dependencies": {
+		"typescript": "^5.3.3"
+	},
+	"homepage": "https://github.com/killbasa/js-utils/tree/main/packages/ts-config",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/killbasa/js-utils.git",
+		"directory": "packages/ts-config"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
