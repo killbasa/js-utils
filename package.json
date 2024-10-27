@@ -1,20 +1,21 @@
 {
 	"name": "@killbasa/js-utils",
 	"private": true,
-	"workspaces": [
-		"packages/*"
-	],
+	"type": "module",
 	"scripts": {
-		"format": "yarn workspaces foreach --all run format"
+		"build": "pnpm -r run build",
+		"lint": "pnpm -r run lint",
+		"format": "pnpm -r run format",
+		"dr": "pnpm build && pnpm lint && pnpm format"
 	},
 	"devDependencies": {
 		"@killbasa/eslint-config": "workspace:^",
 		"@killbasa/prettier-config": "workspace:^",
 		"@killbasa/ts-config": "workspace:^",
-		"@types/node": "^20.11.24",
-		"eslint": "^8.57.0",
-		"prettier": "^3.2.5",
-		"typescript": "^5.3.3"
+		"@types/node": "^22.8.1",
+		"eslint": "^9.13.0",
+		"prettier": "^3.3.3",
+		"typescript": "^5.6.3"
 	},
-	"packageManager": "yarn@4.1.0"
+	"packageManager": "pnpm@9.10.0"
 }

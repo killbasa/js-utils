@@ -1,9 +1,9 @@
 {
 	"extends": "@killbasa/ts-config",
 	"compilerOptions": {
-		"noEmit": true,
-		"allowJs": true,
-		"checkJs": true
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"noEmit": true
 	},
-	"include": ["packages/**/*.ts", "packages/**/*.js", ".eslintrc.cjs"]
+	"exclude": ["node_modules", "dist"]
 }

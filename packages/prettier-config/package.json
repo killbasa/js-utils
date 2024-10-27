@@ -1,7 +1,7 @@
 {
 	"name": "@killbasa/prettier-config",
 	"author": "killbasa <contact@shaneb.xyz>",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"main": "index.js",
 	"exports": {
@@ -10,11 +10,17 @@
 			"require": "./index.js"
 		}
 	},
+	"files": [
+		"index.js"
+	],
 	"scripts": {
-		"format": "prettier --write --loglevel=warn ."
+		"format": "prettier --write --log-level=warn ."
+	},
+	"peerDependencies": {
+		"prettier": "^3"
 	},
 	"dependencies": {
-		"prettier": "^3.2.5"
+		"prettier": "^3.3.3"
 	},
 	"homepage": "https://github.com/killbasa/js-utils/tree/main/packages/prettier-config",
 	"repository": {

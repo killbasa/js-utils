@@ -1,33 +1,41 @@
-module.exports = {
-	root: true,
-	extends: [
-		'plugin:@typescript-eslint/recommended', //
-		'plugin:@typescript-eslint/strict',
-		'plugin:prettier/recommended',
-		'plugin:import/recommended',
-		'plugin:import/typescript'
-	],
-	plugins: [
-		'@typescript-eslint', //
-		'import',
-		'eslint-plugin-tsdoc'
-	],
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		sourceType: 'module',
-		ecmaVersion: 2020,
-		warnOnUnsupportedTypeScriptVersion: false,
-		emitDecoratorMetadata: true
+// @ts-expect-error - No types
+import eslint from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import eslintPrettier from 'eslint-plugin-prettier/recommended';
+// @ts-expect-error - No types
+import eslintImport from 'eslint-plugin-import';
+import type { TSESLint } from '@typescript-eslint/utils';
+
+export const baseConfig: TSESLint.FlatConfig.Config = {
+	name: 'hive/eslint-config',
+	plugins: {
+		import: eslintImport
+	},
+	languageOptions: {
+		globals: {
+			...globals.node,
+			...globals.es2017,
+			...globals.es2020,
+			...globals.browser,
+			...globals.jest,
+			...globals.commonjs
+		},
+		parser: tseslint.parser,
+		parserOptions: {
+			project: ['./tsconfig.eslint.json'],
+			sourceType: 'module',
+			ecmaVersion: 2022,
+			warnOnUnsupportedTypeScriptVersion: false
+		}
 	},
 	settings: {
 		'import/parsers': {
-			'@typescript-eslint/parser': ['.ts', '.d.ts']
+			'@typescript-eslint/parser': ['.ts']
 		},
 		'import/resolver': {
-			typescript: {
-				alwaysTryTypes: true,
-				project: 'tsconfig.json'
-			}
+			typescript: true,
+			node: true
 		}
 	},
 	rules: {
@@ -41,7 +49,6 @@ module.exports = {
 				'ts-ignore': 'allow-with-description'
 			}
 		],
-		'@typescript-eslint/ban-types': 'error',
 		'@typescript-eslint/class-literal-property-style': 'error',
 		'@typescript-eslint/consistent-generic-constructors': 'off',
 		'@typescript-eslint/consistent-indexed-object-style': 'error',
@@ -166,7 +173,6 @@ module.exports = {
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/switch-exhaustiveness-check': 'error',
 		'@typescript-eslint/triple-slash-reference': 'error',
-		'@typescript-eslint/type-annotation-spacing': 'off',
 		'@typescript-eslint/typedef': 'off',
 		'@typescript-eslint/unbound-method': 'error',
 		'@typescript-eslint/unified-signatures': 'off',
@@ -196,34 +202,19 @@ module.exports = {
 		'id-match': 'off',
 		'init-declarations': 'off',
 		'line-comment-position': 'off',
-		'lines-between-class-members': [
-			'error',
-			'always',
-			{
-				exceptAfterSingleLine: true
-			}
-		],
 		'max-depth': 'off',
 		'max-lines': 'off',
 		'max-nested-callbacks': 'off',
 		'max-params': 'off',
 		'max-statements': 'off',
-		'max-statements-per-line': [
-			'error',
-			{
-				max: 1
-			}
-		],
 		'multiline-comment-style': 'off',
 		'new-cap': 'off',
 		'no-alert': 'error',
 		'no-array-constructor': 'off',
 		'no-await-in-loop': 'off',
 		'no-bitwise': 'off',
-		'no-buffer-constructor': 'error',
 		'no-caller': 'error',
 		'no-case-declarations': 'error',
-		'no-catch-shadow': 'error',
 		'no-class-assign': 'warn',
 		'no-compare-neg-zero': 'error',
 		'no-cond-assign': 'warn',
@@ -278,22 +269,17 @@ module.exports = {
 		'no-lonely-if': 'error',
 		'no-loop-func': 'off',
 		'no-magic-numbers': 'off',
-		'no-mixed-requires': 'error',
 		'no-multi-assign': 'warn',
 		'no-multi-str': 'error',
 		'no-negated-condition': 'warn',
 		'no-nested-ternary': 'off',
 		'no-new': 'off',
 		'no-new-func': 'warn',
-		'no-new-object': 'error',
-		'no-new-require': 'error',
-		'no-new-symbol': 'warn',
 		'no-new-wrappers': 'warn',
 		'no-obj-calls': 'warn',
 		'no-octal': 'error',
 		'no-octal-escape': 'error',
 		'no-param-reassign': 'off',
-		'no-path-concat': 'warn',
 		'no-plusplus': 'off',
 		'no-process-env': 'off',
 		'no-process-exit': 'off',
@@ -379,7 +365,6 @@ module.exports = {
 		'sort-imports': ['error', { ignoreDeclarationSort: true }],
 		'sort-keys': 'off',
 		'sort-vars': 'off',
-		'spaced-comment': ['error', 'always'],
 		strict: ['error', 'never'],
 		'symbol-description': 'warn',
 		'use-isnan': 'error',
@@ -411,7 +396,22 @@ module.exports = {
 					'type'
 				]
 			}
-		],
-		'tsdoc/syntax': 'warn'
+		]
 	}
 };
+
+const config: TSESLint.FlatConfig.ConfigArray = tseslint.config(
+	eslint.configs.recommended,
+	...tseslint.configs.recommended,
+	baseConfig,
+	eslintPrettier,
+	{
+		name: 'hive/eslint-config/cjs',
+		files: ['**/*.cjs'],
+		rules: {
+			'@typescript-eslint/no-require-imports': 'off'
+		}
+	}
+);
+
+export default config;
