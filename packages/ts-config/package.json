@@ -1,6 +1,6 @@
 {
 	"name": "@killbasa/ts-config",
-	"author": "killbasa <contact@shaneb.xyz>",
+	"author": "killbasa <git@killbasa.com>",
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "tsconfig.json",
@@ -13,8 +13,8 @@
 	"files": [
 		"tsconfig.json"
 	],
-	"dependencies": {
-		"typescript": "^5.7.2"
+	"devDependencies": {
+		"typescript": "^5.7.3"
 	},
 	"homepage": "https://github.com/killbasa/js-utils/tree/main/packages/ts-config",
 	"repository": {
@@ -22,7 +22,16 @@
 		"url": "git+https://github.com/killbasa/js-utils.git",
 		"directory": "packages/ts-config"
 	},
+	"bugs": {
+		"url": "https://github.com/killbasa/js-utils/issues"
+	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"packageManager": "pnpm@10.4.0",
+	"volta": {
+		"node": "22.14.0",
+		"npm": "11.0.0",
+		"pnpm": "10.4.0"
 	}
 }

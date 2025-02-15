@@ -1,7 +1,7 @@
 {
 	"name": "@killbasa/eslint-config",
-	"author": "killbasa <contact@shaneb.xyz>",
-	"version": "3.0.1",
+	"author": "killbasa <git@killbasa.com>",
+	"version": "3.0.2",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/cjs/index.cjs",
@@ -28,6 +28,9 @@
 			}
 		}
 	},
+	"files": [
+		"dist/"
+	],
 	"scripts": {
 		"build": "tsup",
 		"format": "prettier --write .",
@@ -37,23 +40,23 @@
 		"eslint": "^9"
 	},
 	"dependencies": {
-		"@eslint/js": "^9.16.0",
-		"@typescript-eslint/eslint-plugin": "^8.16.0",
-		"@typescript-eslint/parser": "^8.16.0",
-		"@typescript-eslint/utils": "^8.16.0",
-		"eslint": "^9.16.0",
-		"eslint-import-resolver-typescript": "^3.6.3",
+		"@eslint/js": "^9.20.0",
+		"@typescript-eslint/eslint-plugin": "^8.24.0",
+		"@typescript-eslint/parser": "^8.24.0",
+		"@typescript-eslint/utils": "^8.24.0",
+		"eslint": "^9.20.1",
+		"eslint-import-resolver-typescript": "^3.8.0",
 		"eslint-plugin-import": "^2.30.0",
-		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-prettier": "^5.2.3",
 		"eslint-plugin-svelte": "^2.46.1",
-		"globals": "^15.12.0",
-		"prettier": "^3.4.1",
+		"globals": "^15.15.0",
+		"prettier": "^3.5.1",
 		"svelte-eslint-parser": "^0.43.0",
-		"typescript-eslint": "^8.16.0"
+		"typescript-eslint": "^8.24.0"
 	},
 	"devDependencies": {
-		"tsup": "^8.3.5",
-		"typescript": "^5.7.2"
+		"tsup": "^8.3.6",
+		"typescript": "^5.7.3"
 	},
 	"lint-staged": {
 		"*.{js,ts}": [
@@ -69,7 +72,16 @@
 		"url": "git+https://github.com/killbasa/js-utils.git",
 		"directory": "packages/eslint-config"
 	},
+	"bugs": {
+		"url": "https://github.com/killbasa/js-utils/issues"
+	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"packageManager": "pnpm@10.4.0",
+	"volta": {
+		"node": "22.14.0",
+		"npm": "11.0.0",
+		"pnpm": "10.4.0"
 	}
 }
