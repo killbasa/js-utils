@@ -1,7 +1,7 @@
 {
 	"name": "@killbasa/eslint-config",
 	"author": "killbasa <git@killbasa.com>",
-	"version": "3.0.2",
+	"version": "3.1.5",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/cjs/index.cjs",
@@ -13,7 +13,7 @@
 				"default": "./dist/esm/index.js"
 			},
 			"require": {
-				"types": "./dist/cjs/index.d.cts",
+				"types": "./dist/cjs/index.d.ts",
 				"default": "./dist/cjs/index.cjs"
 			}
 		},
@@ -23,7 +23,7 @@
 				"default": "./dist/esm/svelte.js"
 			},
 			"require": {
-				"types": "./dist/cjs/svelte.d.cts",
+				"types": "./dist/cjs/svelte.d.ts",
 				"default": "./dist/cjs/svelte.cjs"
 			}
 		}
@@ -32,7 +32,7 @@
 		"dist/"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build": "tsup && mv dist/cjs/index.d.cts dist/cjs/index.d.ts && mv dist/cjs/svelte.d.cts dist/cjs/svelte.d.ts",
 		"format": "prettier --write .",
 		"prepublish": "pnpm build"
 	},
@@ -40,23 +40,23 @@
 		"eslint": "^9"
 	},
 	"dependencies": {
-		"@eslint/js": "^9.20.0",
-		"@typescript-eslint/eslint-plugin": "^8.24.0",
-		"@typescript-eslint/parser": "^8.24.0",
-		"@typescript-eslint/utils": "^8.24.0",
-		"eslint": "^9.20.1",
-		"eslint-import-resolver-typescript": "^3.8.0",
+		"@eslint/js": "^9.28.0",
+		"@typescript-eslint/eslint-plugin": "^8.34.0",
+		"@typescript-eslint/parser": "^8.34.0",
+		"@typescript-eslint/utils": "^8.34.0",
+		"eslint": "^9.28.0",
+		"eslint-import-resolver-typescript": "^4.4.3",
 		"eslint-plugin-import": "^2.30.0",
-		"eslint-plugin-prettier": "^5.2.3",
-		"eslint-plugin-svelte": "^2.46.1",
-		"globals": "^15.15.0",
-		"prettier": "^3.5.1",
-		"svelte-eslint-parser": "^0.43.0",
-		"typescript-eslint": "^8.24.0"
+		"eslint-plugin-prettier": "^5.4.1",
+		"eslint-plugin-svelte": "^3.9.2",
+		"globals": "^16.2.0",
+		"prettier": "^3.5.3",
+		"svelte-eslint-parser": "^1.2.0",
+		"typescript-eslint": "^8.34.0"
 	},
 	"devDependencies": {
-		"tsup": "^8.3.6",
-		"typescript": "^5.7.3"
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.3"
 	},
 	"lint-staged": {
 		"*.{js,ts}": [
@@ -78,10 +78,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "pnpm@10.4.0",
+	"packageManager": "pnpm@10.7.0",
 	"volta": {
 		"node": "22.14.0",
 		"npm": "11.0.0",
-		"pnpm": "10.4.0"
+		"pnpm": "10.7.0"
 	}
 }

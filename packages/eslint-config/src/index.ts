@@ -1,37 +1,32 @@
 import eslint from '@eslint/js';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import tsEslint from 'typescript-eslint';
+import tsParser from '@typescript-eslint/parser';
 import eslintPrettier from 'eslint-plugin-prettier/recommended';
 // @ts-expect-error - No types
-import eslintImport from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import';
 import type { TSESLint } from '@typescript-eslint/utils';
 
-export const baseConfig: TSESLint.FlatConfig.Config = {
-	name: 'hive/eslint-config',
-	plugins: {
-		import: eslintImport
-	},
+const baseConfig: TSESLint.FlatConfig.ConfigArray = tsEslint.config({
+	name: 'killbasa/eslint-config',
+	extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
 	languageOptions: {
 		globals: {
 			...globals.node,
 			...globals.es2017,
 			...globals.es2020,
 			...globals.browser,
-			...globals.jest,
 			...globals.commonjs
 		},
-		parser: tseslint.parser,
+		parser: tsParser,
 		parserOptions: {
-			project: ['./tsconfig.eslint.json'],
+			project: ['./tsconfig.json', './tsconfig.eslint.json'],
 			sourceType: 'module',
 			ecmaVersion: 2022,
 			warnOnUnsupportedTypeScriptVersion: false
 		}
 	},
 	settings: {
-		'import/parsers': {
-			'@typescript-eslint/parser': ['.ts']
-		},
 		'import/resolver': {
 			typescript: true,
 			node: true
@@ -176,6 +171,7 @@ export const baseConfig: TSESLint.FlatConfig.Config = {
 		'@typescript-eslint/unbound-method': 'error',
 		'@typescript-eslint/unified-signatures': 'off',
 		'@typescript-eslint/return-await': ['error', 'always'],
+		'@typescript-eslint/require-await': 'error',
 		'accessor-pairs': 'off',
 		'array-callback-return': 'error',
 		'block-scoped-var': 'error',
@@ -379,7 +375,7 @@ export const baseConfig: TSESLint.FlatConfig.Config = {
 		],
 		'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 		'import/no-duplicates': 'error',
-		'import/no-unresolved': 'error',
+		'import/no-unresolved': 'off',
 		'import/no-named-as-default': 'off',
 		'import/order': [
 			'error',
@@ -397,15 +393,15 @@ export const baseConfig: TSESLint.FlatConfig.Config = {
 			}
 		]
 	}
-};
+});
 
-const config: TSESLint.FlatConfig.ConfigArray = tseslint.config(
+const config: TSESLint.FlatConfig.ConfigArray = tsEslint.config(
 	eslint.configs.recommended,
-	...tseslint.configs.recommended,
-	baseConfig,
+	...tsEslint.configs.recommended,
+	...baseConfig,
 	eslintPrettier,
 	{
-		name: 'hive/eslint-config/cjs',
+		name: 'killbasa/eslint-config/cjs',
 		files: ['**/*.cjs'],
 		rules: {
 			'@typescript-eslint/no-require-imports': 'off'
