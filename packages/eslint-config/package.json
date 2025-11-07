@@ -1,7 +1,7 @@
 {
 	"name": "@killbasa/eslint-config",
 	"author": "killbasa <git@killbasa.com>",
-	"version": "3.1.5",
+	"version": "3.1.6",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/cjs/index.cjs",
