@@ -2,25 +2,26 @@
 	"name": "@killbasa/js-utils",
 	"private": true,
 	"type": "module",
+	"workspaces": [
+		"packages/*"
+	],
 	"scripts": {
-		"build": "pnpm -r run build",
-		"lint": "pnpm -r run lint",
-		"format": "pnpm -r run format",
-		"dr": "pnpm build && pnpm lint && pnpm format"
+		"build": "yarn workspaces foreach --all run build",
+		"lint": "yarn workspaces foreach --all run lint",
+		"format": "yarn workspaces foreach --all run format",
+		"dr": "yarn build && yarn lint && yarn format"
 	},
 	"devDependencies": {
 		"@killbasa/eslint-config": "workspace:^",
 		"@killbasa/prettier-config": "workspace:^",
 		"@killbasa/ts-config": "workspace:^",
-		"@types/node": "^24.0.1",
-		"eslint": "^9.28.0",
-		"prettier": "^3.5.3",
-		"typescript": "^5.8.3"
+		"@types/node": "^24.10.0",
+		"eslint": "^9.39.1",
+		"prettier": "^3.6.2",
+		"typescript": "^5.9.3"
 	},
-	"packageManager": "pnpm@10.7.0",
+	"packageManager": "yarn@4.10.3",
 	"volta": {
-		"node": "22.14.0",
-		"npm": "11.0.0",
-		"pnpm": "10.7.0"
+		"node": "24.11.0"
 	}
 }

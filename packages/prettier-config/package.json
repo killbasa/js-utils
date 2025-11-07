@@ -17,7 +17,7 @@
 		"format": "prettier --write --log-level=warn ."
 	},
 	"devDependencies": {
-		"prettier": "^3.5.3"
+		"prettier": "^3.6.2"
 	},
 	"homepage": "https://github.com/killbasa/js-utils/tree/main/packages/prettier-config",
 	"repository": {
@@ -31,10 +31,8 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "pnpm@10.7.0",
+	"packageManager": "yarn@4.10.3",
 	"volta": {
-		"node": "22.14.0",
-		"npm": "11.0.0",
-		"pnpm": "10.7.0"
+		"node": "24.11.0"
 	}
 }
